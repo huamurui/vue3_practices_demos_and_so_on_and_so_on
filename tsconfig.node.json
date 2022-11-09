@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    
+    "strict": true,
+    "forceConsistentCasingInFileNames":true,
+// 我不知道上面这俩true了会怎么样...但是不写vscode会有红线
+
+    "composite": true,
+    "module": "ESNext",
+    "moduleResolution": "Node",
+    "allowSyntheticDefaultImports": true
+  },
+  "include": ["vite.config.ts"]
+}
