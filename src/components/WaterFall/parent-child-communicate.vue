@@ -5,22 +5,21 @@
       background: item.background,
       top: item.top + 'px',
       left: item.left + 'px',
-    }" v-for="item in waterList" class="items" @click="toDetail(item)"></div>
+    }" v-for="item in waterList" class="items">
+      <WaterfallItem :waterItem="item"></WaterfallItem>
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref, reactive, onMounted } from "vue";
+import WaterfallItem from './waterfall-item.vue';
 const props = defineProps<{
   list: any[];
 }>();
 
 const waterList = reactive<any[]>([]);
 
-//想写router但是...没有id。没法写
-const toDetail = (item: any) => {
-  console.log(item);
-};
+
 const init = () => {
   const heightList: any[] = [];
   const width = 180;
