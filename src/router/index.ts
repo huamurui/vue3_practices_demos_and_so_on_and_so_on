@@ -1,7 +1,6 @@
-import { createRouter,createWebHistory} from "vue-router";
-import TreeTree from '../pages/tree-tree.vue';
-import WaterFall from '../pages/water-fall.vue';
-import TransitionGroup from '../pages/transition-group.vue';
+import { createRouter, createWebHistory } from "vue-router"
+import TreeTree from '../pages/TreeTree.vue'
+import WaterFall from '../pages/WaterFall.vue'
 
 const routes = [
   {
@@ -13,12 +12,7 @@ const routes = [
     path: "/waterfall",
     name: "WaterFall",
     component: WaterFall
-  },
-  {
-    path: "/transition-group",
-    name: "TransitionGroup",
-    component: TransitionGroup
-  },
+  }
 
 ]
 

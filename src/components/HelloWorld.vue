@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import  { useHelloStore} from '../store';
+import { useHelloStore } from '../stores';
 const hello = useHelloStore();
 
 defineProps<{ msg: string }>()
@@ -12,7 +12,8 @@ const count = ref(0)
   <h1>{{ msg }}</h1>
   <div class="card">
     <button type="button" @click="count++">count is {{ count }}</button>
-    <button type="button" @click="hello.increment()">{{hello.name}} count is {{ hello.count }}, its double count is {{hello.doubleCount}}</button>
+    <button type="button" @click="hello.increment()">{{ hello.name }} count is {{ hello.count }}, its double count is
+      {{ hello.doubleCount }}</button>
   </div>
 </template>
 

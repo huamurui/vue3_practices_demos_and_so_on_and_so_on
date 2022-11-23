@@ -12,8 +12,8 @@
 </template>
 
 <script setup lang="ts">
-import RecursionRender from './recursion-render.vue';
-import TreeItem from './tree-item.vue';
+import RecursionRender from './RecursionRender.vue';
+import TreeItem from './TreeItem.vue';
 type Props = {
   data?: TreeList[]
 }

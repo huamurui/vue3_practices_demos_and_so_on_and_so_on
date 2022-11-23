@@ -1,9 +1,7 @@
 <script setup lang="ts">
-// This starter template is using Vue 3 <script setup> SFCs
-// Check out https://vuejs.org/api/sfc-script-setup.html#script-setup
-
-import HelloWorld from "./components/HelloWorld.vue";
-import { useRouter } from "vue-router";
+import HelloWorld from "./components/HelloWorld.vue"
+import HelloJsx from "./components/HelloJsx"
+import { useRouter } from "vue-router"
 const router = useRouter();
 const toPagePath = (url: string) => {
   router.push({
@@ -15,9 +13,9 @@ const toPagePath = (url: string) => {
 </script>
 <template>
   <HelloWorld msg="Vite + Vue" />
+  <HelloJsx msg="hello lalala"></HelloJsx>
   <button @click="toPagePath('/treetree')">treetree</button>
   <button @click="toPagePath('/waterfall')">waterfall</button>
-  <button @click="toPagePath('/transition-group')">transition-group</button>
   <button @click="toPagePath('/')">back</button>
 
   <router-view></router-view>
@@ -30,8 +28,6 @@ const toPagePath = (url: string) => {
   line-height: 24px;
   font-weight: 400;
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
   background-color: #242424;
 
   font-synthesis: none;
