@@ -1,36 +1,15 @@
 export default function calculate(config: WaterfallConfig, metas: Array<WaterfallItem>, rects: Array<Rectangle>) {
-  const options = getOptions(config)
-  verticalLineProcessor.calculate(config, options, metas, rects)
-}
-
-//这里的config...算了一个maxLineGap，还有些其他的玩意，其他依只是传递
-//如果用ts的话，把props或者别的结果的类型弄好，传这个就好了。
-function getOptions(config: WaterfallConfig) {
-  const maxLineGap = config.maxLineGap ? +config.maxLineGap : config.lineGap
-  return {
-    lineGap: +config.lineGap,
-    minLineGap: config.minLineGap ? +config.minLineGap : config.lineGap,
-    maxLineGap: maxLineGap,
-    singleMaxWidth: Math.max(config.singleMaxWidth || 0, maxLineGap),
-    //这也能tmd调参啊...就是防止笨蛋用户乱输入东西导致后边程序错乱对吗...
-    //有必要吗...我很信任我自己不会瞎jb输入
-  }
-}
-interface Options {
-  lineGap: number
-  minLineGap: number
-  maxLineGap: number
-  singleMaxWidth: number
+  let a
+  verticalLineProcessor.calculate(a, config, metas, rects)
 }
 
 //这里的config，一个是拿客户端sytle
 var verticalLineProcessor = (() => {
   //好了，这里是真正的计算了。
-  function calculate(item: any, options: Options, metas: Array<WaterfallItem>, rects: Array<Rectangle>) {
+  function calculate(item: any, options: WaterfallConfig, metas: Array<WaterfallItem>, rects: Array<Rectangle>) {
     let width = item.$el.clientWidth
     let strategy = getRowStrategy(width, options)//getCellwidthAndColumcount，是的我会这么叫...？要不写注释里好了。不变名字了
-    let tops = getArrayFillWith(0, strategy.count)//首先这个函数被getRowStrategy调过了一次了...干啥的？...看了看，感觉完全没必要...记录每列宽度
-
+    let tops = [1, 2]
     metas.forEach((meta, index) => {
       let offset = tops.reduce(
         (last, top, i) => (top < tops[last] ? i : last),
@@ -52,7 +31,7 @@ var verticalLineProcessor = (() => {
 
   //综下所述，我觉得，叫getCellsWidthAndColumCount更好
   //这个策略是算列数和每列的宽度，主要变量有...有好多。抄了！
-  function getRowStrategy(width: number, options: Options) {
+  function getRowStrategy(width: number, options: WaterfallConfig) {
     let count = width / options.lineGap
     // 列数，利用默认值计算的，向下取整
     let slotWidth
@@ -119,10 +98,3 @@ function getArrayFillWith(item: any, count: number) {
   return arr
 }
 
-function attr(elem: HTMLElement, name: string, value: string) {
-  if (typeof value !== 'undefined') {
-    elem.setAttribute(name, value)
-  } else {
-    return elem.getAttribute(name) || ''
-  }
-}

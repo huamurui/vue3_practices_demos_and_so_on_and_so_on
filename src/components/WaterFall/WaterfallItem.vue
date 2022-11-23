@@ -9,10 +9,10 @@ const props = defineProps<{
   waterItem: WaterfallItem;
 }>()
 const item = props.waterItem
-// const emit = defineEmits<{
-//   (event: 'reflowed', ...args: any[]): void
-//   (event: 'reflow', ...args: any[]): void
-// }>()
+const emit = defineEmits<{
+  (event: 'reflowed', ...args: any[]): void
+  (event: 'reflow', ...args: any[]): void
+}>()
 
 
 const toDetail = (item: any) => {
@@ -20,8 +20,8 @@ const toDetail = (item: any) => {
 };
 
 onMounted(() => {
-  // emit('reflow');
-  // emit('reflowed');
+  emit('reflow');
+  emit('reflowed');
 });
 </script>
 

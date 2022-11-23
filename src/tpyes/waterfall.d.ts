@@ -1,8 +1,8 @@
 interface WaterfallItem {
   width: number
   height: number
-  order: number
-  moveClass: string
+  // order: number
+  // moveClass: string
 }
 //需要之后在这里添style吗？还是完全抽离？...是实例化的时候能加，别的不行...给我整的麻麻的
 

@@ -20,11 +20,20 @@ const lalala = {
   lineGap: 250,
   minLineGap: 100,
   maxLineGap: 320,
-  singleMaxWidth: 300,//这个貌似，，没什么用
+  singleMaxWidth: 300,
 }
 
 let isBusy = ref(false)
 let items = reactive(ItemFactory.get(100))
+// 奇怪的尝试...
+items.forEach((item: any) => {
+  item.style = {
+    width: item.width + 'px',
+    height: item.height + 'px',
+    background: item.style.background,
+  }
+})
+
 const addItems = function () {
   if (!isBusy.value && items.length < 500) {
     isBusy.value = true
@@ -34,10 +43,6 @@ const addItems = function () {
 }
 const reflowed = function () {
   console.log('reflowed', isBusy.value)
-  //en ...emit这个东西啊，要谨慎使用。
-  //一般都是子组件，通过emit，通知父组件，子组件的状态发生了变化，父组件需要做出相应的处理。
-  //这里是在Conifg那边设了一个定时器，每隔200ms，就会允许触发一次reflowed事件。但...这只是基础。
-  //有很多问题..比如计算部分你到底要放哪。。
   isBusy.value = false
 }
 onMounted(() => {
