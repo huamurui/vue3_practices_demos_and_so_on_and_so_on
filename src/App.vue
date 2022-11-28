@@ -17,7 +17,7 @@ const toPagePath = (url: string) => {
   <button @click="toPagePath('/treetree')">treetree</button>
   <button @click="toPagePath('/waterfall')">waterfall</button>
   <button @click="toPagePath('/')">back</button>
-
+  <button @click="toPagePath('/async')">async</button>
   <router-view></router-view>
 </template>
 

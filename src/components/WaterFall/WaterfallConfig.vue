@@ -5,6 +5,7 @@
 </template>
 
 <script setup lang="ts">
+
 const props = defineProps<{
   Config: WaterfallConfig
   // list: any[]
@@ -16,25 +17,14 @@ const emit = defineEmits<{
 onMounted(() => {
   window.onresize = () => init()//首次加载
 })
-
 onBeforeUpdate(() => {
-  reflowHandler()//这个是懒加载的时候，触发的
+  reflow()//这个是懒加载的时候，触发的
 })
 
 const init = () => {
-  reflowHandler()
-};
-
-
-let token = ref(0)
-function reflowHandler() {
-  // clearTimeout(token.value)
-  // token.value = setTimeout(
-  reflow
-  // , props.Config.interval)
+  reflow()
 }
-
-function reflow() {
+const reflow = () => {
   emit('reflowed')
 }
 

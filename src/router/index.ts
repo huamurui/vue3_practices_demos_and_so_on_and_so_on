@@ -12,6 +12,11 @@ const routes = [
     path: "/waterfall",
     name: "WaterFall",
     component: WaterFall
+  },
+  {
+    path: "/async",
+    name: "Async",
+    component: () => import('../pages/Async.vue')
   }
 
 ]
