@@ -13,15 +13,15 @@ const config = {
 }
 
 
-let items = reactive(ItemFactory.get(18))
+let items = reactive(ItemFactory.get(1))
 let isReflowing = false
 const reflow = () => {
-  isReflowing = true
-  if (isReflowing) {
-    items.push(...ItemFactory.get(6))
-    setTimeout(() => {
-    }, 500)
-  }
+  //   isReflowing = true
+  //   if (isReflowing) {
+  //     items.push(...ItemFactory.get(6))
+  //     setTimeout(() => {
+  //     }, 500)
+  //   }
 }
 const reflowed = () => {
   console.log('reflowed')
@@ -36,7 +36,26 @@ const backToTop = () => {
 const backToHome = () => {
   window.location.href = '/'
 }
-
+for (let i = 1; i < 10; i++) {
+  let index = i
+  let img_url = `http://127.0.0.1:5173/images/Boyana-Petkova${index}.jpg`
+  let img = new Image()
+  img.src = img_url
+  img.onload = () => {
+    console.log('img loaded')
+    console.log(index, img.width, img.height)
+    items.push(
+      {
+        width: img.width,
+        height: img.height,
+        index: index,
+        style: { background: "pink" },
+        url: img_url,
+      }
+    )
+  }
+}
+console.log(items)
 </script>
 
 <template>
@@ -46,6 +65,7 @@ const backToHome = () => {
     <WaterfallConfig :waterfallConfig="config" @scrollToBottom="reflow" @allThingDone="reflowed">
       <WaterfallCell :waterCell="item" v-for="item in items" :key="item.index">
         <div style="color:grey;"> {{ item.index }} </div>
+        <img :src='item.url' style="width:100%;height:100%" />
       </WaterfallCell>
     </WaterfallConfig>
   </div>

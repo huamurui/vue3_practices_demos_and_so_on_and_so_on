@@ -25,8 +25,6 @@ let ItemFactory = (function () {
       'rgba(194,217,78,.5)',
       'rgba(195,123,177,.5)',
       'rgba(125,205,244,.5)',
-      'pink',
-      'skyblue'
     ]
     return colors[~~(Math.random() * colors.length)]
   }
