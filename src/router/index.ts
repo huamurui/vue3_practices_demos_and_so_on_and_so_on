@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router"
 import TreeTree from '../pages/TreeTree.vue'
-import WaterFall from '../pages/BiuBIu.vue'
+import WaterFall from '../pages/BiuBiu.vue'
 
 const routes = [
   {

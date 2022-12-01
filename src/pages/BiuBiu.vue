@@ -29,9 +29,19 @@ const reflowed = () => {
 }
 // let set = reactive({ ultraSetColumnCount: NaN })
 
+const backToTop = () => {
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
+}
+const backToHome = () => {
+  window.location.href = '/'
+}
+
 </script>
 
 <template>
+  <div class="back-to-top" @click="backToTop">backToTop</div>
+  <div class="back-to-home" @click="backToHome">backToHome</div>
   <div>
     <WaterfallConfig :waterfallConfig="config" @scrollToBottom="reflow" @allThingDone="reflowed">
       <WaterfallCell :waterCell="item" v-for="item in items" :key="item.index">
@@ -43,5 +53,37 @@ const reflowed = () => {
 </template>
 
 <style scoped>
+.back-to-top {
+  position: fixed;
+  bottom: 20px;
+  right: 30px;
+  z-index: 99;
+  border: none;
+  outline: none;
+  background-color: red;
+  /* 设置背景颜色，你可以设置自己想要的颜色或图片 */
+  color: white;
+  /* 文本颜色 */
+  cursor: pointer;
+  padding: 15px;
+  border-radius: 10px;
+  /* 圆角 */
+}
 
+.back-to-home {
+  position: fixed;
+  bottom: 20px;
+  left: 30px;
+  z-index: 299;
+  border: none;
+  outline: none;
+  background-color: red;
+  /* 设置背景颜色，你可以设置自己想要的颜色或图片 */
+  color: white;
+  /* 文本颜色 */
+  cursor: pointer;
+  padding: 15px;
+  border-radius: 10px;
+  /* 圆角 */
+}
 </style>
